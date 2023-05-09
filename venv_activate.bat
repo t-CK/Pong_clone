@@ -1,2 +1,2 @@
-call Pong_env\Scripts\Activate.ps1
+call Pong_env\Scripts\Activate.bat
 PAUSE
