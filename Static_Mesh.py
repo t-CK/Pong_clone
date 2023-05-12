@@ -1,3 +1,4 @@
+import Graphics
 
 # Paddle width, usded also for ball size
 PADDLE_WIDTH = 50
@@ -31,11 +32,16 @@ class Ball:
         self.heigth = PADDLE_WIDTH
     
     def Update(self, delta_time :float):
+        # Clamp the ball into play area
+        if self._pos_y >= Graphics.Window.__screen_heigth - PADDLE_WIDTH - 20 or self._pos_y <= 20:
+            self.velocity_v *= -1
+        
+        
         # Update balls position using delta time
         self._pos_x += self.velocity_h * delta_time
         self._pos_y = self.velocity_v * delta_time
+
         
-        # Clamp the ball into play area
 
     # Reset the ball to default position
     def Reset(self):
