@@ -40,6 +40,7 @@ class Game_Mechanics:
        #     self.__prev_tick = 0
 
         self.__delta_time = (time.get_ticks() - self.__prev_tick) / 1000.0
+        self.__prev_tick = time.get_ticks()
         
 
     def Game_Loop(self):
@@ -47,7 +48,6 @@ class Game_Mechanics:
             self.Calculate_Delta_Time()
             print(self.__delta_time)
             self.Get_Input()
-            self.__ball.Update()
+            self.__ball.Update(self.__delta_time)
             self.__wnd.Render()
-            self.__prev_tick = time.get_ticks()
 
