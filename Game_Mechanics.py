@@ -35,9 +35,6 @@ class Game_Mechanics:
 
     def Calculate_Delta_Time(self) -> None:
         """Calculates delta time and saves it into class variable"""
-        # Set first tick to 0
-       # if self.__prev_tick == None:
-       #     self.__prev_tick = 0
 
         self.__delta_time = (time.get_ticks() - self.__prev_tick) / 1000.0 # Calculate delta time from app ticks
         
