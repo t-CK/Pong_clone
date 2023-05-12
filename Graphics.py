@@ -11,16 +11,16 @@ class Window:
 
     def __init__(self) -> None:
         # Initialize display module
-        display.init
+        display.init()
         # Set the values and create the window
         self.__screen_width = 1080
         self.__screen_heigth = 750
-        self.__wnd = display.set_mode(self.__screen_width, self.__screen_heigth)
+        self.__wnd = display.set_mode((self.__screen_width, self.__screen_heigth))
 
     # Draw objects and render the window
     def Render(self, p1 :Paddle, p2 :Paddle, ball :Ball):
         # Clear the screen with blue
-        self.__wnd.fill(0, 0, 255)
+        self.__wnd.fill(color=(0, 0, 255))
 
         # Flip buffers
         display.flip()
