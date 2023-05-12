@@ -39,8 +39,9 @@ class Game_Mechanics:
        # if self.__prev_tick == None:
        #     self.__prev_tick = 0
 
-        self.__delta_time = (time.get_ticks() - self.__prev_tick) / 1000.0
-        self.__prev_tick = time.get_ticks()
+        self.__delta_time = (time.get_ticks() - self.__prev_tick) / 1000.0 # Calculate delta time from app ticks
+        
+        self.__prev_tick = time.get_ticks() # Update __prev_tick value
         
 
     def Game_Loop(self):
