@@ -25,7 +25,7 @@ class Game_Mechanics:
         # Create static meshes
         self.__p1 = Paddle(1)
         # Paddle2
-        self.__ball = Ball()
+        self.__ball = Ball(self.__wnd.Get_Heigth(), self.__wnd.Get_Width())
         # Set __is_running to True
         self.__is_running = True
 
@@ -44,8 +44,8 @@ class Game_Mechanics:
     def Game_Loop(self):
         while self.__is_running:
             self.Calculate_Delta_Time()
-            print(self.__delta_time)
+            print(self.__delta_time)    # DEBUG
             self.Get_Input()
             self.__ball.Update(self.__delta_time)
-            self.__wnd.Render()
+            self.__wnd.Render(self.__ball, None, None)
 

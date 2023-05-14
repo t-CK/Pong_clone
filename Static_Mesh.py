@@ -1,7 +1,7 @@
-import Graphics
+
 
 # Paddle width, usded also for ball size
-PADDLE_WIDTH = 50
+PADDLE_WIDTH = 25
 
 class Paddle:
     def __init__(self, player_no :int) -> None:
@@ -20,26 +20,33 @@ class Paddle:
 
 class Ball:
     # Ball x and y positions as class variable since there's going to be only one instance of this class
-    _pos_x = 0
-    _pos_y = 0
+    _pos_x :int
+    _pos_y :int
     # Balls vertical and horizontal velocity, again as class variable
     velocity_v = 10
     velocity_h = 10
+    # Bounds for the ball
+    __max_y :int
+    __min_y :int
 
-    def __init__(self) -> None:
-        # Set the size of ball
+    def __init__(self, wnd_heigth :int, wnd_width :int) -> None:
+        # Set position and size of the ball
+        self._pos_x = (wnd_width / 2) - (PADDLE_WIDTH / 2)
+        self._pos_y = (wnd_heigth / 2) - (PADDLE_WIDTH / 2)
         self.width = PADDLE_WIDTH
         self.heigth = PADDLE_WIDTH
+        self.__max_y = wnd_heigth - PADDLE_WIDTH - 20 or self._pos_y <= 20
+        self.__min_y = 20
     
     def Update(self, delta_time :float):
         # Clamp the ball into play area
-        if self._pos_y >= Graphics.Window.__screen_heigth - PADDLE_WIDTH - 20 or self._pos_y <= 20:
+        if self._pos_y >= self.__max_y:
             self.velocity_v *= -1
         
         
         # Update balls position using delta time
         self._pos_x += self.velocity_h * delta_time
-        self._pos_y = self.velocity_v * delta_time
+        self._pos_y += self.velocity_v * delta_time
 
         
 

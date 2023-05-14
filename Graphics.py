@@ -1,5 +1,6 @@
 from pygame import display
 from pygame import surface
+from pygame import draw
 from Static_Mesh import *
 
 class Window:
@@ -17,10 +18,20 @@ class Window:
         self.__screen_heigth = 750
         self.__wnd = display.set_mode((self.__screen_width, self.__screen_heigth))
 
+    def Get_Heigth(self) -> int:
+        return self.__screen_heigth
+    def Get_Width(self) -> int:
+        return self.__screen_width
+
     # Draw objects and render the window
-    def Render(self, p1 :Paddle, p2 :Paddle, ball :Ball):
+    def Render(self, ball :Ball, p1 :Paddle, p2 :Paddle):
         # Clear the screen with blue
         self.__wnd.fill(color=(0, 0, 255))
 
+        # Draw the ball
+        ball_mesh = draw.rect(self.__wnd, color=(255, 255, 255), rect=(ball._pos_x, ball._pos_y, PADDLE_WIDTH, PADDLE_WIDTH))
+
+        # Update display
+        display.update()
         # Flip buffers
         display.flip()
