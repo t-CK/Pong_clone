@@ -9,6 +9,7 @@ class Window:
     __screen_width  :int
     __screen_heigth :int
     __wnd           :surface.Surface
+    __mesh_color = (255, 255, 255)
 
     def __init__(self) -> None:
         # Initialize display module
@@ -27,6 +28,10 @@ class Window:
     def Render(self, ball :Ball, p1 :Paddle, p2 :Paddle):
         # Clear the screen with blue
         self.__wnd.fill(color=(0, 0, 255))
+
+        # Draw walls
+        w_top = draw.rect(self.__wnd, color=self.__mesh_color, rect=(0, 15, self.__screen_width, 20))
+        w_bottom = draw.rect(self.__wnd, color=self.__mesh_color, rect=(0, self.__screen_heigth - 35, self.__screen_width, 20))
 
         # Draw the ball
         ball_mesh = draw.rect(self.__wnd, color=(255, 255, 255), rect=(ball._pos_x, ball._pos_y, PADDLE_WIDTH, PADDLE_WIDTH))
