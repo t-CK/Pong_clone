@@ -47,5 +47,5 @@ class Game_Mechanics:
             print(self.__delta_time)    # DEBUG
             self.Get_Input()
             self.__ball.Update(self.__delta_time)
-            self.__wnd.Render(self.__ball, None, None)
+            self.__wnd.Render(self.__ball, self.__p1)
 

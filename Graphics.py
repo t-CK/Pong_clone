@@ -33,14 +33,15 @@ class Window:
 
     # Draw objects and render the window
     # Overload for 1 player
-    @dispatch(Paddle, Ball)
-    def Render(self, p1 :Paddle, ball):
+    @dispatch(Ball, Paddle)
+    def Render(self, ball :Ball, p1 :Paddle):
         # Clear the screen with blue
         self.__wnd.fill(color=(0, 0, 255))
 
         # Draw walls
-        w_top = draw.rect(self.__wnd, color=self.__mesh_color, rect=(0, 15, self.__screen_width, 20))
-        w_bottom = draw.rect(self.__wnd, color=self.__mesh_color, rect=(0, self.__screen_heigth - 35, self.__screen_width, 20))
+        w_top = draw.rect(self.__wnd, color=self.__mesh_color, rect=(0, 15, self.__screen_width -15, 20))
+        w_bottom = draw.rect(self.__wnd, color=self.__mesh_color, rect=(0, self.__screen_heigth - 35, self.__screen_width -15, 20))
+        w_back = draw.rect(self.__wnd, color=self.__mesh_color, rect=(self.__screen_width -35, 20, 20, self.__screen_heigth - 35)) # Rear wall for 1p game
 
         # Draw the ball
         ball_mesh = draw.rect(self.__wnd, color=(255, 255, 255), rect=(ball._pos_x, ball._pos_y, PADDLE_WIDTH, PADDLE_WIDTH))
