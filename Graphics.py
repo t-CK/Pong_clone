@@ -44,7 +44,10 @@ class Window:
         w_back = draw.rect(self.__wnd, color=self.__mesh_color, rect=(self.__screen_width -35, 20, 20, self.__screen_heigth - 35)) # Rear wall for 1p game
 
         # Draw the ball
-        ball_mesh = draw.rect(self.__wnd, color=(255, 255, 255), rect=(ball._pos_x, ball._pos_y, PADDLE_WIDTH, PADDLE_WIDTH))
+        ball_mesh = draw.rect(self.__wnd, self.__mesh_color, rect=(ball._pos_x, ball._pos_y, PADDLE_WIDTH, PADDLE_WIDTH))
+
+        # Draw paddle
+        paddle_mesh = draw.rect(self.__wnd, self.__mesh_color, rect=(p1.Get_X(), p1.Get_Y(), PADDLE_WIDTH, PADDLE_HEIGTH))
 
         # Update display
         display.update()

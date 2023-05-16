@@ -23,7 +23,7 @@ class Game_Mechanics:
         # Get number of players from user
         
         # Create static meshes
-        self.__p1 = Paddle(1)
+        self.__p1 = Paddle(1, self.__wnd.Get_Heigth())
         # Paddle2
         self.__ball = Ball(self.__wnd.Get_Heigth(), self.__wnd.Get_Width())
         # Set __is_running to True

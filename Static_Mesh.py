@@ -1,10 +1,11 @@
 
 
 # Paddle width, usded also for ball size
-PADDLE_WIDTH = 25
+PADDLE_WIDTH = 20
+PADDLE_HEIGTH = 100
 
 class Paddle:
-    def __init__(self, player_no :int) -> None:
+    def __init__(self, player_no :int, wnd_heigth :int) -> None:
         __movement_speed = 10
         # set the player number and paddle x-position accordingly
         self.__player_no = player_no
@@ -13,10 +14,21 @@ class Paddle:
         else:
             pass # x_position for player 2 will be set to window width - (20 - PADDLE_WIDTH)
 
-        def Update(self, delta_time :float, input_value = 0):
-            # Move the paddle
-            self.__pos_x += self.__movement_speed * input_value * delta_time
-            # Clamp to top/bottom of the play area
+        # Set paddle Y pos to center of screen vertically
+        self.__pos_y = (wnd_heigth / 2) - (PADDLE_HEIGTH / 2) 
+
+    # Get the X position of paddle
+    def Get_X(self) -> float:
+        return self.__pos_x
+    
+    # Get the Y position of paddle
+    def Get_Y(self) -> float:
+        return self.__pos_y
+
+    def Update(self, delta_time :float, input_value = 0):
+        # Move the paddle
+        self.__pos_x += self.__movement_speed * input_value * delta_time
+        # Clamp to top/bottom of the play area
 
 class Ball:
     # Ball x and y positions as class variable since there's going to be only one instance of this class
