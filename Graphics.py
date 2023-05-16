@@ -1,3 +1,4 @@
+from multipledispatch import dispatch
 from pygame import display
 from pygame import surface
 from pygame import draw
@@ -25,7 +26,15 @@ class Window:
         return self.__screen_width
 
     # Draw objects and render the window
+    # Overload for 2 players
+    @dispatch(Ball, Paddle, Paddle)
     def Render(self, ball :Ball, p1 :Paddle, p2 :Paddle):
+        pass
+
+    # Draw objects and render the window
+    # Overload for 1 player
+    @dispatch(Paddle, Ball)
+    def Render(self, p1 :Paddle, ball):
         # Clear the screen with blue
         self.__wnd.fill(color=(0, 0, 255))
 
