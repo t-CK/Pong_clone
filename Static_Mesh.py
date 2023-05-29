@@ -4,6 +4,22 @@
 PADDLE_WIDTH = 20
 PADDLE_HEIGTH = 100
 
+class Wall:
+    def __init__(self, pos_x, pos_y, width, height) -> None:
+        # Initialize an instance of wall
+        self.__pos_x = pos_x
+        self.__pos_y = pos_y
+        self.__width = width
+        self.__heigth = heigth
+    
+    def get_pos(self) -> tuple:
+        """ Get the position of wall (x, y)"""
+        return (self.__pos_x, self.__pos_y) # Return the x and y position of wall as tuple
+    
+    def get_size(self) -> tuple:
+        """Get the size of the wall as tuple (width, heigth)"""
+        return (self.__width, self.__heigth)
+
 class Paddle:
     def __init__(self, player_no :int, wnd_heigth :int) -> None:
         __movement_speed = 10
