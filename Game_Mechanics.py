@@ -1,6 +1,7 @@
 from Graphics import *
 from Static_Mesh import *
 from pygame import time
+from pygame import locals, key, event # input imports
 
 class Game_Mechanics:
     # Class is going to be static
@@ -31,13 +32,17 @@ class Game_Mechanics:
 
     
     def Get_Input(self):
-        pass
+        if(event.peek()):
+            # if event in quay, get keys pressed
+            keys = key.get_pressed()
+            e = event.poll() # Poll events
+            # if event type is pygame.QUIT or escape has been pressed, quit the program
+            if e.type == locals.QUIT or keys[locals.K_ESCAPE]:
+                quit()
 
     def Calculate_Delta_Time(self) -> None:
         """Calculates delta time and saves it into class variable"""
-
-        self.__delta_time = (time.get_ticks() - self.__prev_tick) / 1000.0 # Calculate delta time from app ticks
-        
+        self.__delta_time = (time.get_ticks() - self.__prev_tick) / 1000.0 # Calculate delta time from app ticks        
         self.__prev_tick = time.get_ticks() # Update __prev_tick value
         
 
