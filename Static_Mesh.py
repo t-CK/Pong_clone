@@ -63,13 +63,21 @@ class Ball:
         self._pos_y = (wnd_heigth / 2) - (PADDLE_WIDTH / 2)
         self.width = PADDLE_WIDTH
         self.heigth = PADDLE_WIDTH
+        
+        # Set max y-value for ball
         self.__max_y = wnd_heigth - PADDLE_WIDTH * 3
         self.__min_y = 40
+        
+        self._max_x = wnd_width - PADDLE_WIDTH * 3
     
     def Update(self, delta_time :float):
         # Clamp the ball into play area
+        # y-axis
         if self._pos_y >= self.__max_y:
             self.velocity_v *= -1
+        # x-axis
+        if self._pos_x >= self._max_x:
+            self.velocity_h *= -1
         
         
         # Update balls position using delta time
