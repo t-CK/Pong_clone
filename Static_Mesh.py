@@ -65,12 +65,15 @@ class Ball:
     __max_y :int
     __min_y :int
 
-    def __init__(self, wnd_heigth :int, wnd_width :int) -> None:
+    def __init__(self, wnd_heigth :int, wnd_width :int, p1 :Paddle) -> None:
         # Set position and size of the ball
         self._pos_x = (wnd_width / 2) - (PADDLE_WIDTH / 2)
         self._pos_y = (wnd_heigth / 2) - (PADDLE_WIDTH / 2)
         self.width = PADDLE_WIDTH
         self.heigth = PADDLE_WIDTH
+        
+        # Add reference to player
+        self._p1 = p1
         
         # Set max y-value for ball
         self.__max_y = wnd_heigth - PADDLE_WIDTH * 3
@@ -88,6 +91,10 @@ class Ball:
         # x-axis
         if self._pos_x >= self._max_x:
             self.velocity_h *= -1
+        # Collission with player
+        if self._pos_x <= self._p1.Get_X() + PADDLE_WIDTH:
+            if (self._pos_y >= self._p1.Get_Y()) and (self._pos_y <= self._p1.Get_Y() + PADDLE_HEIGTH):
+                self.velocity_h *= -1
         
         
         # Update balls position using delta time

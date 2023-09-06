@@ -26,7 +26,7 @@ class Game_Mechanics:
         # Create static meshes
         self.__p1 = Paddle(1, self.__wnd.Get_Heigth())
         # Paddle2
-        self.__ball = Ball(self.__wnd.Get_Heigth(), self.__wnd.Get_Width())
+        self.__ball = Ball(self.__wnd.Get_Heigth(), self.__wnd.Get_Width(), self.__p1)
         # Set __is_running to True
         self.__is_running = True
         
