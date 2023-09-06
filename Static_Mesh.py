@@ -72,6 +72,10 @@ class Ball:
         self.width = PADDLE_WIDTH
         self.heigth = PADDLE_WIDTH
         
+        # Save center position as class variables (x & y)
+        self._center_x = (wnd_width / 2) - (PADDLE_WIDTH / 2)
+        self._center_y = (wnd_heigth / 2) - (PADDLE_WIDTH / 2)
+        
         # Add reference to player
         self._p1 = p1
         
@@ -81,6 +85,11 @@ class Ball:
         
         self._max_x = wnd_width - PADDLE_WIDTH * 3
     
+    def Reset(self):
+        """Reset the ball at the center of window"""
+        self._pos_x = self._center_x
+        self._pos_y = self._center_y
+
     def Update(self, delta_time :float):
         # Clamp the ball into play area
         # y-axis
@@ -95,15 +104,10 @@ class Ball:
         if self._pos_x <= self._p1.Get_X() + PADDLE_WIDTH:
             if (self._pos_y >= self._p1.Get_Y()) and (self._pos_y <= self._p1.Get_Y() + PADDLE_HEIGTH):
                 self.velocity_h *= -1
+        if self._pos_x <= 0:
+            self.Reset()
         
         
         # Update balls position using delta time
         self._pos_x += self.velocity_h * delta_time
-        self._pos_y += self.velocity_v * delta_time
-
-        
-
-    # Reset the ball to default position
-    def Reset(self):
-        self._pos_x = 0
-        self._pos_y = 0
+        self._pos_y += self.velocity_v * delta_time        
