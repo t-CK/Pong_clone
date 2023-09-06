@@ -10,7 +10,7 @@ class Wall:
         self.__pos_x = pos_x
         self.__pos_y = pos_y
         self.__width = width
-        self.__heigth = heigth
+        self.__heigth = height
     
     def get_pos(self) -> tuple:
         """ Get the position of wall (x, y)"""
@@ -51,8 +51,8 @@ class Ball:
     _pos_x :int
     _pos_y :int
     # Balls vertical and horizontal velocity, again as class variable
-    velocity_v = 10
-    velocity_h = 10
+    velocity_v = 100
+    velocity_h = 100
     # Bounds for the ball
     __max_y :int
     __min_y :int
@@ -63,8 +63,8 @@ class Ball:
         self._pos_y = (wnd_heigth / 2) - (PADDLE_WIDTH / 2)
         self.width = PADDLE_WIDTH
         self.heigth = PADDLE_WIDTH
-        self.__max_y = wnd_heigth - PADDLE_WIDTH - 20 or self._pos_y <= 20
-        self.__min_y = 20
+        self.__max_y = wnd_heigth - PADDLE_WIDTH * 3
+        self.__min_y = 40
     
     def Update(self, delta_time :float):
         # Clamp the ball into play area
