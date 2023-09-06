@@ -22,7 +22,7 @@ class Wall:
 
 class Paddle:
     def __init__(self, player_no :int, wnd_heigth :int) -> None:
-        __movement_speed = 10
+        self.__movement_speed = 10
         # set the player number and paddle x-position accordingly
         self.__player_no = player_no
         if player_no == 1:
