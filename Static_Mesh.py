@@ -75,6 +75,8 @@ class Ball:
         # y-axis
         if self._pos_y >= self.__max_y:
             self.velocity_v *= -1
+        elif self._pos_y <= self.__min_y:
+            self.velocity_v *= -1
         # x-axis
         if self._pos_x >= self._max_x:
             self.velocity_h *= -1
