@@ -29,6 +29,8 @@ class Game_Mechanics:
         self.__ball = Ball(self.__wnd.Get_Heigth(), self.__wnd.Get_Width())
         # Set __is_running to True
         self.__is_running = True
+        
+        key.set_repeat(1, 1)
 
     
     def Get_Input(self):
@@ -39,6 +41,10 @@ class Game_Mechanics:
             # if event type is pygame.QUIT or escape has been pressed, quit the program
             if e.type == locals.QUIT or keys[locals.K_ESCAPE]:
                 quit()
+            if keys[locals.K_UP]:
+                self.__p1.Update(self.__delta_time, -1)
+            if keys[locals.K_DOWN]:
+                self.__p1.Update(self.__delta_time, 1)
 
     def Calculate_Delta_Time(self) -> None:
         """Calculates delta time and saves it into class variable"""

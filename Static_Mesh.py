@@ -22,7 +22,7 @@ class Wall:
 
 class Paddle:
     def __init__(self, player_no :int, wnd_heigth :int) -> None:
-        self.__movement_speed = 10
+        self.__movement_speed = 100
         # set the player number and paddle x-position accordingly
         self.__player_no = player_no
         if player_no == 1:
@@ -43,7 +43,7 @@ class Paddle:
 
     def Update(self, delta_time :float, input_value = 0):
         # Move the paddle
-        self.__pos_x += self.__movement_speed * input_value * delta_time
+        self.__pos_y += self.__movement_speed * input_value * delta_time
         # Clamp to top/bottom of the play area
 
 class Ball:
