@@ -32,6 +32,10 @@ class Paddle:
 
         # Set paddle Y pos to center of screen vertically
         self.__pos_y = (wnd_heigth / 2) - (PADDLE_HEIGTH / 2) 
+        
+        # Set min and max y-values
+        self._min_y = 2 * PADDLE_WIDTH
+        self._max_y = wnd_heigth - PADDLE_HEIGTH - 2*PADDLE_WIDTH
 
     # Get the X position of paddle
     def Get_X(self) -> float:
@@ -45,6 +49,10 @@ class Paddle:
         # Move the paddle
         self.__pos_y += self.__movement_speed * input_value * delta_time
         # Clamp to top/bottom of the play area
+        if self.__pos_y <= self._min_y:
+            self.__pos_y = self._min_y
+        if self.__pos_y >= self._max_y:
+            self.__pos_y = self._max_y
 
 class Ball:
     # Ball x and y positions as class variable since there's going to be only one instance of this class
